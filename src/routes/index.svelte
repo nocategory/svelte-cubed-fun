@@ -19,16 +19,16 @@
 	shadows
 >
 	<SC.Mesh
-		geometry={new THREE.BoxGeometry()}
+		geometry={new THREE.SphereGeometry(1, 32, 32)}
 		material={new THREE.MeshStandardMaterial({ color: 0xffffff })}
 		rotation={[0, spin, 0]}
 		castShadow
 	/>
-	<SC.PerspectiveCamera position={[2, 1, 2]} />
+	<SC.PerspectiveCamera position={[5, 1, 2]} />
 	<SC.OrbitControls enableZoom maxPolarAngle={Math.PI * 0.51} />
 	<SC.AmbientLight intensity={0.7} />
 	<SC.DirectionalLight intensity={0.2} position={[-5, 10, 2]} shadow={{ mapSize: [2048, 2048] }} />
-	<SC.Group position={[0, -1 / 2, 0]}>
+	<SC.Group position={[0, -1, 0]}>
 		<SC.Mesh
 			geometry={new THREE.PlaneGeometry(50, 50)}
 			material={new THREE.MeshStandardMaterial({ color: '#d4d4d4' })}
