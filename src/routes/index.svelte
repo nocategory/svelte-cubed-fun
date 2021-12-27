@@ -20,7 +20,17 @@
 >
 	<SC.Mesh
 		geometry={new THREE.SphereGeometry(1, 32, 32)}
-		material={new THREE.MeshStandardMaterial({ color: 0xffffff })}
+		material={new THREE.ParticleBasicMaterial({
+			color: '#fff',
+			size: 0.1,
+			transparent: true,
+			opacity: 0.5,
+			blending: THREE.AdditiveBlending,
+			depthWrite: false,
+			depthTest: false,
+			sizeAttenuation: true,
+			vertexColors: false
+		})}
 		rotation={[0, spin, 0]}
 		castShadow
 	/>
