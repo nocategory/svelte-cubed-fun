@@ -1,12 +1,15 @@
 <script>
 	import * as THREE from 'three';
 	import * as SC from 'svelte-cubed';
+	import { onMount } from 'svelte';
 
 	let spin = 0;
 
 	SC.onFrame(() => {
 		spin += 0.01;
 	});
+
+	const textureLoader = new THREE.TextureLoader();
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -20,20 +23,16 @@
 >
 	<SC.Mesh
 		geometry={new THREE.SphereGeometry(1, 32, 32)}
-		material={new THREE.ParticleBasicMaterial({
-			color: '#fff',
-			size: 0.1,
-			transparent: true,
+		material={new THREE.MeshStandardMaterial({
+			map: textureLoader.load('/earth.jpeg'),
+			shininess: 100,
 			opacity: 0.5,
-			blending: THREE.AdditiveBlending,
-			depthWrite: false,
-			depthTest: false,
-			sizeAttenuation: true,
-			vertexColors: false
+			transparent: true
 		})}
-		rotation={[0, spin, 0]}
-		castShadow
+		position={[0, 0, 0]}
+		rotation={[0, 0, spin]}
 	/>
+	} rotation={[0, spin, 0]} castShadow />
 	<SC.PerspectiveCamera position={[5, 1, 2]} />
 	<SC.OrbitControls enableZoom maxPolarAngle={Math.PI * 0.51} />
 	<SC.AmbientLight intensity={0.7} />
